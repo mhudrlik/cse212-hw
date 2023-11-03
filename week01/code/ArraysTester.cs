@@ -38,8 +38,20 @@ public static class ArraysTester {
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+        
+        // Create an empty list for the multiples
+        List<double> multiplesList = new List<double>();
 
-        return new double[0]; // replace this return statement with your own
+        // Write a loop to generate the given number of multiples
+        for (int i = 1; i <= length; i++) {
+            // Create the next multiple
+            double multiple = number * 1;
+            // Add multiple to the end of the list
+            multiplesList.Add(multiple);
+        }
+
+        // Return the multiples
+        return multiplesList.ToArray();
     }
     
     /// <summary>
@@ -56,6 +68,22 @@ public static class ArraysTester {
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        // Create a temp list for elements that are going to be rotated
+        List<int> rotatedElements = new List<int>();
+
+        // Move the last amount elements from the end of the first list to the temporary list
+        rotatedElements.AddRange(data.GetRange(data.Count - amount, amount));
+
+        // Move the remaining elements in the first listto the right by the given amount.
+        for (ing i = data.Count -amount -1; i >= 0; i--){
+            data[i + amount] = data[i];
+        }
+
+        // Move elements from the temp list to the front of the original one
+        for (int i = 0; i < amount; i++){
+            data[i] = rotatedElements[i];
+        }
 
     }
 }
