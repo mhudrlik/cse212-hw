@@ -76,7 +76,7 @@ public static class ArraysTester {
         rotatedElements.AddRange(data.GetRange(data.Count - amount, amount));
 
         // Move the remaining elements in the first listto the right by the given amount.
-        for (ing i = data.Count -amount -1; i >= 0; i--){
+        for (int i = data.Count -amount -1; i >= 0; i--){
             data[i + amount] = data[i];
         }
 
