@@ -45,7 +45,7 @@ public static class ArraysTester {
         // Write a loop to generate the given number of multiples
         for (int i = 1; i <= length; i++) {
             // Create the next multiple
-            double multiple = number * 1;
+            double multiple = number * i;
             // Add multiple to the end of the list
             multiplesList.Add(multiple);
         }
