@@ -25,7 +25,7 @@ public static class TakingTurns {
         // Console.WriteLine(players);    // This can be un-commented out for debug help
         while (players.Length > 0)
             players.GetNextPerson();
-        // Defect(s) Found: 
+        // Defect(s) Found: Didn't add people to the queue when they had turns left
 
         Console.WriteLine("---------");
 
@@ -48,7 +48,7 @@ public static class TakingTurns {
         while (players.Length > 0)
             players.GetNextPerson();
 
-        // Defect(s) Found: 
+        // Defect(s) Found: Adding george to the queue didn't work as expected
 
         Console.WriteLine("---------");
 
@@ -66,7 +66,7 @@ public static class TakingTurns {
             players.GetNextPerson();
             // Console.WriteLine(players);
         }
-        // Defect(s) Found: 
+        // Defect(s) Found: Didn't work with infinite turns properly
 
         Console.WriteLine("---------");
 
@@ -76,6 +76,6 @@ public static class TakingTurns {
         Console.WriteLine("Test 4");
         players = new TakingTurnsQueue();
         players.GetNextPerson();
-        // Defect(s) Found:
+        // Defect(s) Found: Empty queue didn't display an error
     }
 }
