@@ -14,3 +14,8 @@ public static class ArraySelector
         return new int[0];
     }
 }
+
+//// Initialize two counters, one for each input list.
+///  Create an empty list to store the result
+///  Iterate over the select array for each element
+///  Return the result list after traversing all elements in the select array
