@@ -9,6 +9,8 @@
  *
  */
 
+using System.Threading.Tasks.Dataflow;
+
 /// <summary>
 /// Maintain a Customer Service Queue.  Allows new customers to be 
 /// added and allows customers to be serviced.
@@ -22,24 +24,65 @@ public class CustomerService {
         // Test Cases
 
         // Test 1
-        // Scenario: 
-        // Expected Result: 
+        // Scenario: Default of 10 in the queue, if less than or equal to 0, default to 10.
+        // Expected Result: Sets max size of queue to 10
         Console.WriteLine("Test 1");
+        
+        var cs = new CustomerService(2);
+        // Console.WriteLine(cs);
 
-        // Defect(s) Found: 
+        // Defect(s) Found: None
 
         Console.WriteLine("=================");
 
         // Test 2
-        // Scenario: 
-        // Expected Result: 
+        // Scenario: AddNewCustomer adds a new customer into the queue
+        // Expected Result: Adds user to back of queue
         Console.WriteLine("Test 2");
 
-        // Defect(s) Found: 
+        cs.AddNewCustomer();
+        cs.AddNewCustomer();
+
+
+        // Defect(s) Found: None
 
         Console.WriteLine("=================");
 
         // Add more Test Cases As Needed Below
+
+        // Test 3
+        // Scenario: If full, display an error message
+        // Expected Result: display error message
+        
+
+        cs.AddNewCustomer();
+        //cs.AddNewCustomer();
+
+
+        // Defect(s) Found: No error message displayed.  --Fixed
+        Console.WriteLine("=================");
+
+        // Test 4
+        // Scenario: ServeCustomer dequeue's the next customer and displays details of the customer that was dequeued
+        // Expected Result: Dequeue and display customer info
+        Console.WriteLine("Test 4");
+
+        cs.ServeCustomer();
+
+
+        // Defect(s) Found: Displaying the next person in queue instead of the person who just left the queue --Fixed
+        Console.WriteLine("=================");
+
+        // Test 5
+        // Scenario: If full, display an error message
+        // Expected Result: display error message
+        Console.WriteLine("Test 5");
+
+        cs.ServeCustomer();
+        cs.ServeCustomer();
+
+        // Defect(s) Found: None
+        Console.WriteLine("=================");
     }
 
     private readonly List<Customer> _queue = new();
@@ -78,7 +121,7 @@ public class CustomerService {
     /// </summary>
     private void AddNewCustomer() {
         // Verify there is room in the service queue
-        if (_queue.Count > _maxSize) {
+        if (_queue.Count >= _maxSize) {
             Console.WriteLine("Maximum Number of Customers in Queue.");
             return;
         }
@@ -99,9 +142,14 @@ public class CustomerService {
     /// Dequeue the next customer and display the information.
     /// </summary>
     private void ServeCustomer() {
-        _queue.RemoveAt(0);
-        var customer = _queue[0];
-        Console.WriteLine(customer);
+        if (_queue.Count !=0) {
+            var customer = _queue[0];
+            _queue.RemoveAt(0);
+            Console.WriteLine(customer);
+        }
+        else {
+            Console.WriteLine("No one is in the queue!");
+        }
     }
 
     /// <summary>
